@@ -2,7 +2,7 @@ const { ApolloServer } = require('apollo-server');
 
 
 
-import { typeDefs, resolvers } from "./schema"
+import { typeDefs , resolvers } from "./schema"
 
 // var app = express();
 
