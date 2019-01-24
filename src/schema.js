@@ -21,7 +21,7 @@ export const typeDefs = [
     mutationType,
     userType,
     userMutation,
-    // userQuery
+    userQuery
 ]
 
 export const resolvers = [userResolver]

@@ -9,8 +9,10 @@ enum Role {
 }
 type User {
     id: ID!,
-    username: String!,
+    email: String!,
     role: Role!,
-    token: String
+    token: String,
+    phone: String!,
+    name: String!
 }`
 
