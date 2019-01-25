@@ -10,6 +10,5 @@ type Token {
 extend type Mutation {
     create(input: UserCreateFields) : User,
     login(email: String!): String!
-    
 }
 `

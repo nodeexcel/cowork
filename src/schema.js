@@ -1,6 +1,11 @@
-import userType from "./types/user"
-import userMutation from "./mutations/user"
+import types from "./types/user"
+
 import userQuery from "./queries/user"
+
+
+import userMutation from "./mutations/user"
+import teamMutation from "./mutations/team"
+
 import { gql } from 'apollo-server'
 import userResolver from "./resolvers/user"
 
@@ -19,9 +24,10 @@ type Mutation {
 export const typeDefs = [
     queryType,
     mutationType,
-    userType,
+    types,
     userMutation,
-    userQuery
+    userQuery,
+    teamMutation
 ]
 
 export const resolvers = [userResolver]

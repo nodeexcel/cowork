@@ -28,8 +28,13 @@ const server = new ApolloServer({
         // try to retrieve a user with the token
         const user = await dataStore.getUser(token);
 
+        let isAdmin = false
+        if (user.role == "ADMIN") {
+            isAdmin = true
+        }
+
         // add the user to the context
-        return { user };
+        return { user, isAdmin };
     }
 });
 
