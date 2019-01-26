@@ -1,5 +1,4 @@
 import dataStore from "../data"
-import { container, datastore } from "google-proto-files";
 export default {
     Mutation: {
         create: async (_, { input: { email, password, name, phone } }) => {

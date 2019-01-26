@@ -1,13 +1,18 @@
-import types from "./types/user"
+import { gql } from 'apollo-server'
+
+
+import types from "./types"
 
 import userQuery from "./queries/user"
+import planQuery from "./queries/plan"
 
 
 import userMutation from "./mutations/user"
 import teamMutation from "./mutations/team"
+import planMutation from "./mutations/plan"
 
-import { gql } from 'apollo-server'
 import userResolver from "./resolvers/user"
+import planResolver from "./resolvers/plan"
 
 
 const queryType = gql`
@@ -27,7 +32,9 @@ export const typeDefs = [
     types,
     userMutation,
     userQuery,
-    teamMutation
+    teamMutation,
+    planMutation,
+    planQuery
 ]
 
-export const resolvers = [userResolver]
+export const resolvers = [userResolver, planResolver]

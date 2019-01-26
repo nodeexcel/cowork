@@ -16,12 +16,6 @@ type User {
     name: String!
     team: Team
 }
-enum Plan {
-    FIXEDMONTHLY,
-    FLOATINGMONTHLY,
-    DAILY,
-    NIGHT PLAN
-}
 type Team {
     name: String!,
     rate: String!,
@@ -38,6 +32,13 @@ type Team {
     existing_member: Boolean,
     is_signed: Boolean,
     signature: String
+}
+type Plan {
+    id: ID!
+    name: String!,
+    cost: String!,
+    duration: Int,
+    details: String
 }
 
 `

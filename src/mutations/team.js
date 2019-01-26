@@ -6,7 +6,7 @@ input TeamCreateFields {
     name: String!,
     rate: String!,
     no_of_seats: Int!,
-    plan: Plan!,
+    plan: String!,
     company_name: String,
     pan: String,
     id_proof: String,
