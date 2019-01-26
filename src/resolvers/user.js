@@ -1,36 +1,11 @@
-import dataStore from "../data"
+import userStore from "../data/user"
 export default {
     Mutation: {
         create: async (_, { input: { email, password, name, phone } }) => {
-            return await dataStore.createUser(email, password, name, phone)
+            return await userStore.createUser(email, password, name, phone)
         },
         login: async (_, { email }) => {
-            return await dataStore.login(email)
-        },
-        syncTeam: async (_, { input }, context) => {
-            if (!context.user) {
-                throw new Error("Unauthorized")
-            }
-            await dataStore.syncTeam(input)
-            return input
-        },
-        signAgreement: async (_, { user_id, sign }, context) => {
-            if (!context.user) {
-                throw new Error("Unauthorized")
-            }
-
-            return await dataStore.signAgreement(user_id, sign)
-        },
-        editTeam: async (_, { input }, context) => {
-            if (!context.user) {
-                throw new Error("Unauthorized")
-            }
-            if (input.user_id !== context.user.id) {
-                if (!context.isAdmin) {
-                    throw new Error("Cannot Edit Other Users Data")
-                }
-            }
-            return await dataStore.editTeam(input)
+            return await userStore.login(email)
         }
     },
     Query: {
@@ -46,7 +21,7 @@ export default {
                 throw new Error("Unauthorized")
             }
             if (context.isAdmin) {
-                return await dataStore.listUsers(input)
+                return await userStore.listUsers(input)
             }
             throw new Error("Only Admin User Allowed")
         },
@@ -60,40 +35,22 @@ export default {
                 }
             }
 
-            return await dataStore.getUser("", id)
+            return await userStore.getUser("", id)
         }
     },
     User: {
-        team: async (_, { }, context) => {
-            if (!context.user) {
-                throw new Error("Unauthorized")
-            }
-            if (context.user.team) {
-                return context.user.team
-            }
-            if (_.id) {
-                let team = await dataStore.getTeam(_.id)
-                if (!team) {
-                    return null
-                }
-                return team
-
-            } else {
-                return null
-            }
-        },
         name: async (_) => {
             if (_.name) {
                 return _.name
             } else {
-                return await dataStore.getUserName(_.id)
+                return await userStore.getUserName(_.id)
             }
         },
         role: async (_) => {
             if (_.role) {
                 return _.role
             } else {
-                return await dataStore.getUserRole(_.id)
+                return await userStore.getUserRole(_.id)
             }
         },
     }

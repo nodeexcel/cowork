@@ -13,6 +13,7 @@ import planMutation from "./mutations/plan"
 
 import userResolver from "./resolvers/user"
 import planResolver from "./resolvers/plan"
+import teamResolver from "./resolvers/team"
 
 
 const queryType = gql`
@@ -37,4 +38,4 @@ export const typeDefs = [
     planQuery
 ]
 
-export const resolvers = [userResolver, planResolver]
+export const resolvers = [userResolver, planResolver, teamResolver]

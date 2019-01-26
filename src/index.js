@@ -3,7 +3,7 @@ const { ApolloServer } = require('apollo-server');
 
 import firebase from "./firebase"
 import { typeDefs, resolvers } from "./schema"
-import dataStore from "./data"
+import dataStore from "./data/user"
 
 
 firebase.init()

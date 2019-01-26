@@ -1,4 +1,5 @@
 import planStore from "../data/plan"
+import userStore from "../data/user"
 
 export default {
     Mutation: {
@@ -27,6 +28,15 @@ export default {
                 throw new Error("Only Admin User Allowed")
             }
             return await planStore.viewPlans()
+        }
+    },
+    Team: {
+        plan: async (_) => {
+            if (_.plan.id) {
+                return _.plan
+            } else {
+                return await userStore.getUserPlan(_.id, _.plan)
+            }
         }
     }
 }
